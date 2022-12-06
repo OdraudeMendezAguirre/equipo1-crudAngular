@@ -4,21 +4,21 @@
   min-height: 100vh;
 }
 .bg-image {
-  background-image: url('./../../assets/img/fluid.jpg');
+  background-image: url('./../../assets/img/hombrecomputadora.jpg');
   background-size: cover;
   background-position: center center;
 }
 
 .container-fluid{
-  background-color: #05041f;
-  color:#d9d8e7;
+  background-color: #d9d8e7;
+  color:#121212;
   font-family: 'Source Sans Pro', sans-serif;
 }
 
 input{
   color: #c7c7cf;
-  background-color: #030313;
-  border: none;
+  background-color: #ffffff;
+  border: solid;
 }
 input::placeholder{
   color: #c5c5c5;
@@ -26,18 +26,18 @@ input::placeholder{
 }
 
 .btn{
-  background-color: #111d41;
+  background-color: #121212;
   color: #E5E5E5;
   border-radius: 13px;
   align-items: center;
   letter-spacing: 2px;
 }
 .btn:hover{
-  background-color: #05063a;
+  background-color: #474747;
 }
 a{
   color: #beb8be;
 }
 a:hover{
-  color: #0a1729;
+  color: #E5E5E5;
 }
