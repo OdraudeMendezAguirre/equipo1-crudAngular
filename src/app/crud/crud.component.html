@@ -15,14 +15,17 @@
           <h2>CRUD <b>Empleados</b></h2>
         </div>
         <div class="container-fluid col-sm-3 col-md-4 col-lg-4">
+          <button type="button" class="btn btn-success" (click)="refresh()">
+            <span>Refrescar</span>
+          </button>
           <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#agregar">
             <span>Agregar Empleado</span>
           </button>
         </div>
         <div class="container-fluid col-sm-6 col-md-4 col-lg-4">
           <form class="d-flex" role="search">
-            <input class="form-control" type="search" placeholder="Buscar..." aria-label="Search">
-            <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+            <input type="search" placeholder="ID..." class="form-control" name="idBusqueda" [(ngModel)]="idBusqueda">
+            <button class="btn btn-outline-secondary" type="submit" (click)="buscar()">Buscar</button>
           </form>
         </div>
       </div>
@@ -37,31 +40,17 @@
           <th scope="col">Options</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody *ngFor="let usr of usuarios; let i = index">
         <tr>
-          <th scope="row">1</th>
-          <td>Arely CR</td>
-          <td>acr@hotmail.com</td>
-          <td>tucola</td>
+          <th scope="row">{{usr.id}}</th>
+          <td>{{usr.nombre}}</td>
+          <td>{{usr.correo}}</td>
+          <td>{{usr.contrasena}}</td>
           <td class="btn-group me-2">
-            <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#editar">
+            <button type="button" class="btn btn-outline-secondary" (click)="setusr(usr)" data-bs-toggle="modal" data-bs-target="#editar">
               <span> Actualizar </span>
             </button>
-            <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#eliminar">
-              <span> Eliminar </span>
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Kevinski</td>
-          <td>kevibnsku@gmail.com</td>
-          <td>1234</td>
-          <td class="btn-group me-2">
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editar">
-              <span> Actualizar </span>
-            </button>
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#eliminar">
+            <button type="button" class="btn btn-outline-secondary" (click)="setusr(usr)" data-bs-toggle="modal" data-bs-target="#eliminar">
               <span> Eliminar </span>
             </button>
           </td>
@@ -82,20 +71,20 @@
       <div class="modal-body">
         <div class="form-group mb-3">
           <label>Nombre de Usuario</label>
-          <input type="text" placeholder="Ingrese su nombre" class="form-control" required>
+          <input type="text" placeholder="Ingrese su nombre" class="form-control" name="nombre" [(ngModel)]="usuario.nombre" required>
         </div>
         <div class="form-group mb-3">
           <label>Correo Electrónico</label>
-          <input type="email" class="form-control" required>
+          <input type="email" class="form-control" [(ngModel)]="usuario.correo" required>
         </div>
         <div class="form-group mb-3">
           <label>Contraseña</label>
-          <input type="password" class="form-control" required>
+          <input type="password" class="form-control" [(ngModel)]="usuario.contrasena" required>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-success">Guardar</button>
+        <button type="button" class="btn btn-success" (click)="agregar()" data-bs-dismiss="modal">Guardar</button>
       </div>
     </div>
   </div>
@@ -112,20 +101,20 @@
       <div class="modal-body">
         <div class="form-group mb-3">
           <label>Nombre de Usuario</label>
-          <input type="text" placeholder="Ingrese su nombre" class="form-control" required>
+          <input type="text" placeholder="Ingrese su nombre" class="form-control" [(ngModel)]="usuario.nombre" required>
         </div>
         <div class="form-group mb-3">
           <label>Correo Electrónico</label>
-          <input type="email" class="form-control" required>
+          <input type="email" class="form-control" [(ngModel)]="usuario.correo" required>
         </div>
         <div class="form-group mb-3">
           <label>Contraseña</label>
-          <input type="password" class="form-control" required>
+          <input type="password" class="form-control" [(ngModel)]="usuario.contrasena" required>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-success">Guardar</button>
+        <button type="button" class="btn btn-success" (click)="actualizar()" data-bs-dismiss="modal">Guardar</button>
       </div>
     </div>
   </div>
@@ -139,13 +128,13 @@
         <h1 class="modal-title fs-5" id="eliminarEmpleado">ELIMINAR EMPLEADO</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body text-center">					
+      <div class="modal-body text-center">
         <h4>¿Está seguro de eliminar a este empleado?</h4>
         <p class="text-secondary"><i>Esta acción no se puede deshacer.</i></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-danger">Eliminar</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"(click)="eliminar()" data-bs-dismiss="modal">Eliminar</button>
       </div>
     </div>
   </div>

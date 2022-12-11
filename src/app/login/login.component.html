@@ -12,18 +12,18 @@
                             <br>
                             <form>
                                 <div class="form-group input-group-lg mb-3">
-                                    <input id="inputEmail" name="email" type="email" placeholder="Correo Electrónico" required="" autofocus="" class="form-control border-0 px-4">
+                                    <input id="inputEmail" name="email" type="email" placeholder="Correo Electrónico" required="" class="form-control border-0 px-4" [(ngModel)]="usuario.correo">
                                 </div>
                                 <div class="form-group input-group-lg mb-3">
-                                    <input id="inputPassword" name="contrasena" type="password" placeholder="Contraseña" required="" class="form-control border-0 px-4">
+                                    <input id="inputPassword" name="contrasena" type="password" placeholder="Contraseña" required="" class="form-control border-0 px-4" [(ngModel)]="usuario.contrasena">
                                 </div>
                                 <br class="">
                                 <div class="">
-                                    <a routerLink="/crud" type="submit" class="btn btn-lg">Iniciar Sesión</a>
+                                    <a (click)="login()" type="submit" class="btn btn-lg">Iniciar Sesión</a>
                                 </div>
-                                
+
                             </form>
-                            
+
                         </div>
                     </div>
                 </div>
