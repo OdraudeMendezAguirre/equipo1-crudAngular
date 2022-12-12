@@ -1,7 +1,6 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable } from "rxjs";
-import { Usuario } from './Entity/usuario';
+import { Observable } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -10,7 +9,7 @@ import { Usuario } from './Entity/usuario';
 
     private api="http://localhost:8085/usr";
     private cid= "";
-
+    private log="http://localhost:8085/usr/login";
     constructor(private http: HttpClient) { }
 
     setId(id:number){
@@ -38,7 +37,16 @@ import { Usuario } from './Entity/usuario';
     }
 
     public login(usuario:any):Observable<any>{
-      return this.http.get(this.api,usuario)
+      return this.http.get(this.log,usuario)
     }
+
+    httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': '*',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Methods':'*'
+        })
+      }
 
   }
